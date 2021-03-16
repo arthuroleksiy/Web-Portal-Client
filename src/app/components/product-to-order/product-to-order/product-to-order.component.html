@@ -1,0 +1,46 @@
+<!--<p>
+  product-to-order works!
+</p>
+<form [formGroup] = "AddProductToOrderForm" novalidate class="needs-validation" (ngSubmit) = "addProductOrder(AddProductToOrderForm.value)">
+  <p><span class="label">Product Name:</span> <select formControlName="productName">
+    <option [class.is-invalid]="product.productName" [value]="product.productName" *ngFor="let product of products">{{product.productName}}</option>
+  </select></p>
+
+  <p><input id="quantity" type="text" formControlName="quantity" digitOnly decimal="true"  required/></p>
+
+
+
+  <p>Product Size: <select formControlName="productSize">
+    <option [value]="size.size" *ngFor="let size of sizes">{{size.size}}</option>
+  </select></p>
+
+  <p><button type="submit" class="button">Save</button></p>
+</form>
+-->
+<form [formGroup] = "AddProductToOrderForm"  (ngSubmit) = "addProductOrder(AddProductToOrderForm.value)">
+  <p id="order">
+    Add product to order
+  </p>
+  <div class="line">
+    <span class="label">Product Name:</span>
+    <select formControlName="productName">
+      <option [class.is-invalid]="product.productName" [value]="product.productName" *ngFor="let product of products">{{product.productName}}</option>
+    </select>
+  </div>
+  <div class="line">
+    <span class="label">Quantity:</span>
+    <input id="quantity" type="text" formControlName="quantity" digitOnly decimal="true"  required/>
+  </div>
+  <div class="line">
+    <span class="label">Product Size: </span><select formControlName="productSize">
+      <option [value]="size.size" *ngFor="let size of sizes">{{size.size}}</option>
+    </select>
+  </div>
+  <p *ngIf="checkError!=''">
+    {{checkError}}
+  </p>
+  <div id = "buttons">
+    <button type="submit" class="button">Save</button>
+    <button type="reset" routerLink="/newOrder" class="button">Cancel</button>
+  </div>
+</form>

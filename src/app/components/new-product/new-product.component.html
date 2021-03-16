@@ -1,0 +1,83 @@
+<!--<p>
+  New Customer
+</p>
+<form [formGroup] = "AddNewProductForm" (ngSubmit) = "addProduct(AddNewProductForm.value)">
+  <p><label>Product Name:</label><input type="text" formControlName="productName"></p>
+  <p><label>Available Quantity:</label><input id="decimal-number"type="text" formControlName="availableQuantity"  digitOnly decimal="true" placeholder="000"></p>
+  <p><label>Price:</label>
+    <input id="decimal-number" type="text" formControlName="price" digitOnly decimal="true" placeholder="000"/>
+    <p>Category: <select formControlName="categoryName">
+    <option [value]="category.categoryName" *ngFor="let category of categories">{{category.categoryName}}</option>
+  </select></p>
+  <p>Size: <select formControlName="productSize">
+    <option [value]="size.size" *ngFor="let size of sizes">{{size.size}}</option>
+  </select></p>
+  <p><label>Creation Date:</label><label formControlName="createDate" >{{today | date }}</label></p>
+  <p><label>Description:</label><textarea type="text" formControlName="description"></textarea></p>
+  <p><button type="submit" class="button">Save</button></p>
+</form>-->
+
+<form [formGroup] = "AddNewProductForm" (ngSubmit) = "addProduct(AddNewProductForm.value)" >
+  <p id="order">
+    New Product
+  </p>
+  <div class="line">
+    <label class="label">Product Name:</label>
+    <input class="input" id="productName" type="text" class="form-control"  formControlName="productName" required>
+    <div class="error" *ngIf="submitted && productName.errors?.required">
+      Empty name value.
+    </div>
+  </div>
+
+  <div class="line">
+    <label class="label">Available Quantity:</label>
+    <input id="decimal-number" class="form-control" formControlName="availableQuantity"  type="text"  required>
+    <div class="error" *ngIf="submitted && availableQuantity.errors?.required">
+      Empty quantity value.
+    </div>
+  </div>
+
+  <div class="line">
+    <label class="label">Price:</label>
+    <input id="decimal-number" class="form-control"  type="text" formControlName="price" required>
+    <div class="error" *ngIf="submitted && price.errors?.required">
+      Empty price value.
+    </div>
+  </div>
+    <div class="line">
+      <label class="label">Category:</label>
+      <select formControlName="categoryName">
+        <option [ngValue]="category.categoryName" class="form-control"  *ngFor="let category of categories"  >{{category.categoryName}}</option>
+        </select>
+        <div class="error" *ngIf="submitted && categoryName.errors?.required">
+          Category name is required.
+      </div>
+     </div>
+    <div class="line">
+      <label class="label">Size: </label><select formControlName="productSize">
+        <option [value]="size.size" class="form-control" *ngFor="let size of sizes" >{{size.size}}</option>
+      </select>
+      <!--<div *ngIf="productSize.invalid && (productSize.dirty || productSize.touched)" class="alert alert-danger">-->
+
+      <div class="error" *ngIf="submitted && productSize.errors?.required">
+        Product size is required.
+    <!--</div>-->
+    </div>
+    </div>
+
+    <p class="error" *ngIf="checkError!=''">
+      {{checkError}}
+    </p>
+  <div class="line">
+    <label class="label">Creation Date:</label>
+    <label class="input" class="form-control" formControlName="createDate" >{{today | date }}</label>
+  </div>
+  <div class="line">
+    <label class="label">Description:</label><textarea id="input" type="text" class="form-control" formControlName="description"></textarea>
+  </div>
+
+  <div id = "buttons">
+    <button type="submit" class="button">Save</button>
+    <button (click)= "reset()" class="button">Cancel</button>
+  </div>
+</form>

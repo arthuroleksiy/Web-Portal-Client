@@ -1,0 +1,61 @@
+<form [formGroup] = "EditProductForm" (ngSubmit) = "updateProduct(EditProductForm.value)" >
+  <p id="order">
+    Edit Product
+  </p>
+  <div class="line">
+    <label class="label">Product Name:</label>
+    <input type="text" formControlName="productName">
+    <div class="error" *ngIf="submitted && productName.errors?.required">
+      Empty name value.
+    </div>
+  </div>
+
+  <div class="line">
+    <label class="label">Available Quantity:</label>
+    <input type="text" formControlName="availableQuantity"  digitOnly decimal="true" />
+    <div class="error" *ngIf="submitted && availableQuantity.errors?.required">
+      Empty quantity value.
+    </div>
+  </div>
+
+  <div class="line">
+    <label class="label">Price:</label>
+    <input type="text" formControlName="price" digitOnly decimal="true"/>
+    <div class="error" *ngIf="submitted && price.errors?.required">
+      Empty price value.
+    </div>
+  </div>
+
+    <div class="line">
+      <label class="label">Category:</label> <select formControlName="categoryName">
+        <option [value]="category.categoryName" *ngFor="let category of categories">{{category.categoryName}}</option>
+        </select>
+        <div class="error" *ngIf="submitted && categoryName.errors?.required">
+          Category name is required.
+      </div>
+      </div>
+
+    <div class="line">
+      <label class="label">Size: </label><select formControlName="productSize">
+        <option [value]="size.size" *ngFor="let size of sizes">{{size.size}}</option>
+      </select>
+      <div class="error" *ngIf="submitted && productSize.errors?.required">
+        Product size is required.
+     </div>
+    </div>
+
+    <p class="error" *ngIf="checkError!=''">
+      {{checkError}}
+    </p>
+  <div class="line">
+    <label class="label">Creation Date:</label><label formControlName="createDate" >{{today | date}}</label>
+  </div>
+  <div class="line">
+    <label class="label">Description:</label><textarea id="input" type="text" formControlName="description"></textarea>
+  </div>
+
+  <div id = "buttons">
+    <button type="submit" class="button">Save</button>
+    <button type="reset" (click)= "reset()" class="button">Cancel</button>
+  </div>
+</form>

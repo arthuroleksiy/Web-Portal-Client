@@ -1,0 +1,97 @@
+<!--<p>
+  New Order
+</p>
+
+<form [formGroup] = "AddNewOrderForm" (ngSubmit) = "addOrder(AddNewOrderForm.value)">
+  <p><span class="label">Customer: </span><select formControlName="customer">
+    <option [value]="customer.customerName" *ngFor="let customer of customers">{{customer.customerName}}</option>
+  </select></p>
+  <p><span class="label">Status:</span> <select formControlName="status">
+    <option [value]="status.statusName" *ngFor="let status of statuses">{{status.statusName}}</option>
+  </select></p>
+  <p><span class="label">Total cost:</span> <label *ngFor="let i = totalCost" formControlName="totalOrderCost">{{i}}</label></p>
+  <p><span class="label">OrderDate:</span><label formControlName="orderDate" >{{today | date }}</label>
+  <p><span class="label">Add product</span> <button (click)="addCurrentState()">Add Button To Order</button></p>
+  <ul>
+    <li *ngFor="let order of productOrders;">
+      <a>{{order.product.productId}}</a> {{order.product.productName}} {{order.product.categoryName}} {{order.product.productSize}} {{order.quantity}} {{order.product.price}}
+    </li>
+  </ul>
+  <p><span class="label">Comment:</span><textarea type="text" formControlName="comment"></textarea></p>
+  <p><button type="submit" class="button">Save</button></p>
+</form>
+-->
+<form [formGroup] = "AddNewOrderForm" (ngSubmit) = "addOrder(AddNewOrderForm.value)">
+  <p id="order">
+    New Order
+  </p>
+  <div class="line">
+    <span class="label">Customer: </span><select class="form-control" formControlName="customerName">
+    <option class="input" [value]="customer.customerName" *ngFor="let customer of customers">{{customer.customerName}}</option>
+  </select>
+  <div class="error" *ngIf="submitted && customerName.errors?.required">
+    Choose customer.
+</div>
+  </div>
+  <div class="line">
+    <span class="label">Status:</span> <select class="form-control" formControlName="statusName">
+    <option class="input" [value]="status.statusName" *ngFor="let status of statuses">{{status.statusName}}</option>
+  </select>
+  <div class="error" *ngIf="submitted && statusName.errors?.required">
+    Choose status.
+</div>
+
+</div>
+  <div class="line">
+    <span class="label">Total cost:</span> <label class="form-control" formControlName="totalOrderCost">{{totalCost}}</label>
+  </div>
+  <div class="line">
+    <span class="label">OrderDate:</span><label class="form-control" formControlName="orderDate" >{{today | date }}</label>
+  </div>
+  <div class="line">
+    <span class="label">Add product</span> <button id="add"(click)="addCurrentState()">Add Button To Order</button>
+  </div>
+  <p class="error" *ngIf="checkError!=''">
+    {{checkError}}
+  </p>
+    <!--
+    <ul>
+      <li *ngFor="let order of productOrders;">
+        <a>{{order.product.productId}}</a> {{order.product.productName}} {{order.product.categoryName}} {{order.product.productSize}} {{order.quantity}} {{order.product.price}}
+      </li>
+    </ul>
+  -->
+  <table>
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Product Size</th>
+        <th>Quantity </th>
+        <th>Price </th>
+        <th>Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let order of productOrders; let i = index;">
+        <!--<td><a (ngSubmit) = "gotoDetail(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>-->
+        <td><a href="">{{order.productId}}</a></td>
+        <td class="address">{{order.product.productName}}</td>
+        <td>{{order.product.categoryName}}</td>
+        <td>{{order.product.productSize}}</td>
+        <td> {{order.quantity}}</td>
+        <td>{{order.product.price}}</td>
+        <td><button mat-button (click)="openDialog(order.productId)">Delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+  <div class="line">
+    <label class="label">Comment:</label>
+    <textarea type="text" class="form-control" formControlName="comment"></textarea>
+  </div>
+  <div id = "buttons">
+    <button type="submit" class="button">Save</button>
+    <button type="reset" (click)="reset()" class="button">Cancel</button>
+  </div>
+</form>

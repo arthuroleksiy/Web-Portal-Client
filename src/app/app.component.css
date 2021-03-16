@@ -1,0 +1,30 @@
+
+.border {
+}
+div#first {
+  height: 20%;
+  padding-left:4%;
+}
+div#second {
+  height: 60%;
+}
+.navigation {
+  font-weight: 500;
+  display:inline-block;
+  padding: 1em 0.1em;
+  border:0.1em solid black;
+  border-radius: 3px solid black;
+  margin: 0 0.3em 1em 0.3em;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  color: black;
+  text-align:center;
+  transition: all 0.2s;
+  width:130px;
+}
+
+#mainTitle {
+  font-size: 30px;
+}

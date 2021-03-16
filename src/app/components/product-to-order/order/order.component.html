@@ -1,0 +1,23 @@
+<div class="border">
+<div class="but"> <span id="order"><b>Orders</b></span> <button id="newOrder" routerLink="/newOrder">New Order</button></div>
+<table >
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Customer name</th>
+      <th>Customer address</th>
+      <th>Total cost</th>
+      <th>Status </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let order of outputOrders  |async">
+      <td><a (click)="toViewProduct(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>
+      <td>{{order.customerName}}</td>
+      <td class="address">{{order.customerAddress }}</td>
+      <td>{{order.totalOrderCost}}</td>
+      <td>{{order.statusName}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

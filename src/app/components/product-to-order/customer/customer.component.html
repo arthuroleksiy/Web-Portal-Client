@@ -1,0 +1,31 @@
+<!--<ul>
+  <div><p>Customers</p>  <button routerLink="/newCustomer">New customer</button></div>
+  <li *ngFor="let customer of customers; let i = index;">
+    <a>{{customer.customerId}}</a> {{customer.customerName}} {{customer.customerAddress}} {{customer.totalOrderCost}} {{customer.orderedCount}}
+  </li>
+</ul>
+-->
+<div class="border">
+  <div class="but"> <span id="order"><b>Customers</b></span> <button id="newOrder" routerLink="/newCustomer">New Customer</button></div>
+  <table >
+    <thead>
+      <tr>
+        <th>Customer name</th>
+        <th>Customer address</th>
+        <th>Total ordered cost</th>
+        <th>Orders count </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let customer of customers; let i = index;">
+        <!--<td><a (ngSubmit) = "gotoDetail(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>-->
+        <td>{{customer.customerName}}</td>
+        <td class="address">{{customer.customerAddress}}</td>
+        <td>{{customer.totalOrderCost}}</td>
+        <td>{{customer.orderedCount}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+

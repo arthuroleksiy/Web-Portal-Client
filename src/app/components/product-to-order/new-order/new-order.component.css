@@ -1,0 +1,132 @@
+
+
+#order {
+  margin-bottom: 0%;
+  margin-left: 1%;
+  color:rgb(45, 125, 151);
+  font-size: x-large;
+  font-family: bald;
+  font-weight: bold;
+}
+tr:nth-child(even) {background-color:rgb(122, 212, 248)}
+tr:nth-child(odd) {background-color:#FFF}
+tr>th {
+  background-color:rgb(7, 80, 163);
+  color:white;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+table {
+  margin-left: 4%;
+  margin-bottom: 20px;
+  width: 40vw;
+  border-spacing: 0.5px;
+  overflow: auto;
+  resize:inherit
+}
+
+.address {
+  text-align: left;
+  padding-left: 10px;
+}
+
+#newOrder {
+  margin-left: 84%;
+  font-weight: 500;
+  display:inline-block;
+  padding: 0.5em 0.5em;
+  margin-bottom: 5px;
+  border:0.1em solid black;
+  border-radius: 3px solid black;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  color: black;
+  text-align:center;
+  transition: all 0.2s;
+  width:80px;
+  border-radius:3px;
+}
+#order {
+  margin-bottom: 0%;
+  margin-left: 1%;
+  color:rgb(45, 125, 151);
+  font-size: x-large;
+  font-family: bald;
+}
+.border {
+  width:80%;
+  border:1px solid black;
+  border-radius: 3px;
+  margin-left:4.5%;
+}
+.line {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 8em auto;
+  margin-top: 1.5em;
+  margin-left:30px;
+  width:60%;
+  font-weight: bold;
+}
+form {
+  width:fit-content;
+  height:auto;
+  border: 1px solid black;
+  margin-left: 43px;
+  /*display: flex;
+	flex-wrap: wrap;*/
+  position:absolute;
+
+  min-width: 1vw;
+}
+
+
+#buttons {
+  padding-top: 40px;
+  width:30%;
+  height:10%;
+  margin-bottom: 20px;
+  margin-left: 60%;
+  position:static;
+}
+button {
+  height: 3vh;
+  width:10vw;
+}
+
+#order {
+  margin-bottom: 0%;
+  margin-left: 1%;
+  color:rgb(45, 125, 151);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  text-align: right;
+  line-height: 26px;
+  margin-bottom: 10px;
+  width:auto;
+}
+
+.input {
+  height: 20px;
+}
+#add {
+   height:auto;
+ }

@@ -1,0 +1,46 @@
+.line {
+  width: 50%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 8em 12em;
+  margin-top: 1.5em;
+}
+form {
+  width:70%;
+  height:80%;
+  border: 1px solid black;
+  margin-left: 43px;
+  padding-left: 40px;
+}
+
+.input {
+  grid-column-start: 3;
+  grid-column-end: 7;
+}
+.label{
+
+  grid-column-start: 0;
+  grid-column-end: 2;
+  font-weight: bold;
+}
+#buttons {
+  padding-top: 7%;
+  width:400px;
+  height:40px;
+  margin-left:60%;
+}
+button {
+  height: 30px;
+  width:120px;
+  margin:5px;
+}
+
+#order {
+  margin-bottom: 0%;
+  margin-left: 1%;
+  color:rgb(45, 125, 151);
+  font-size: x-large;
+  font-family: bald;
+  font-weight: bold;
+}
+

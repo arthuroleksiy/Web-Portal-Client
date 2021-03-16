@@ -1,0 +1,35 @@
+<!--<ul>
+  <div><p>Products</p>  <button routerLink="/newProduct">New product</button></div>
+  <li *ngFor="let product of products; let i = index;">
+    <a>{{product.productId}}</a> {{product.productName}} {{product.categoryName}} {{product.productSize}} {{product.availableQuantity}} {{product.price}}
+    <input type="button" (click)="deleteProduct(product.productId)" value="Delete">
+  </li>
+</ul>-->
+<div class="border">
+  <div class="but"> <span id="order"><b>Products</b></span> <button id="newOrder" routerLink="/newProduct">New Product</button></div>
+  <table >
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Category</th>
+        <th>Product Size</th>
+        <th>Quantity </th>
+        <th>Price </th>
+        <th>Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let product of products;">
+        <!--<td><a (ngSubmit) = "gotoDetail(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>-->
+        <td><a  (click)="toViewProduct(product.productId)">{{product.productId}}</a></td>
+        <td>{{product.productName}}</td>
+        <td>{{product.categoryName}}</td>
+        <td>{{product.productSize}}</td>
+        <td> {{product.availableQuantity}}</td>
+        <td>{{product.price}}</td>
+        <td><button mat-button (click)="openDialog(product.productId)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
