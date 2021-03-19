@@ -17,67 +17,71 @@
   <p><button type="submit" class="button">Save</button></p>
 </form>-->
 
+<div class="container">
 <form [formGroup] = "AddNewProductForm" (ngSubmit) = "addProduct(AddNewProductForm.value)" >
   <p id="order">
     New Product
   </p>
-  <div class="line">
+  <ul class="flex-outer">
+    <li>
     <label class="label">Product Name:</label>
     <input class="input" id="productName" type="text" class="form-control"  formControlName="productName" required>
+    </li>
     <div class="error" *ngIf="submitted && productName.errors?.required">
       Empty name value.
     </div>
-  </div>
 
-  <div class="line">
+  <li>
     <label class="label">Available Quantity:</label>
     <input id="decimal-number" class="form-control" formControlName="availableQuantity"  type="text"  required>
+  </li>
     <div class="error" *ngIf="submitted && availableQuantity.errors?.required">
       Empty quantity value.
     </div>
-  </div>
 
-  <div class="line">
+
+  <li>
     <label class="label">Price:</label>
     <input id="decimal-number" class="form-control"  type="text" formControlName="price" required>
+  </li>
     <div class="error" *ngIf="submitted && price.errors?.required">
       Empty price value.
     </div>
-  </div>
-    <div class="line">
+
+    <li>
       <label class="label">Category:</label>
       <select formControlName="categoryName">
-        <option [ngValue]="category.categoryName" class="form-control"  *ngFor="let category of categories"  >{{category.categoryName}}</option>
-        </select>
-        <div class="error" *ngIf="submitted && categoryName.errors?.required">
+        <option [ngValue]="category.categoryName" class="form-control"  *ngFor="let category of categories"  >{{category.categoryName}}
+        </option>
+      </select>
+    </li>
+    <div class="error" *ngIf="submitted && categoryName.errors?.required">
           Category name is required.
-      </div>
-     </div>
-    <div class="line">
+    </div>
+
+    <li>
       <label class="label">Size: </label><select formControlName="productSize">
         <option [value]="size.size" class="form-control" *ngFor="let size of sizes" >{{size.size}}</option>
       </select>
-      <!--<div *ngIf="productSize.invalid && (productSize.dirty || productSize.touched)" class="alert alert-danger">-->
-
-      <div class="error" *ngIf="submitted && productSize.errors?.required">
-        Product size is required.
-    <!--</div>-->
-    </div>
-    </div>
-
+    </li>
+    <div class="error" *ngIf="submitted && productSize.errors?.required">
+      Product size is required.
+   </div>
     <p class="error" *ngIf="checkError!=''">
       {{checkError}}
     </p>
-  <div class="line">
+  <li>
     <label class="label">Creation Date:</label>
     <label class="input" class="form-control" formControlName="createDate" >{{today | date }}</label>
-  </div>
-  <div class="line">
-    <label class="label">Description:</label><textarea id="input" type="text" class="form-control" formControlName="description"></textarea>
-  </div>
-
+  </li>
+  <li>
+    <label class="label">Description:</label>
+    <textarea id="input" type="text" class="form-control" formControlName="description"></textarea>
+  </li>
   <div id = "buttons">
     <button type="submit" class="button">Save</button>
     <button (click)= "reset()" class="button">Cancel</button>
   </div>
+  </ul>
 </form>
+</div>

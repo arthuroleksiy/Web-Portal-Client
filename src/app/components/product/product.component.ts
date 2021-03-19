@@ -58,7 +58,7 @@ export class ProductComponent implements OnInit {
         this.productService.addViewedProducts(data);
       });
 
-      this.router.navigate(["/view-product/"+id, {id : id}]);
+      this.router.navigate(["/products/", id]);
   }
 
   getProduct(): void {

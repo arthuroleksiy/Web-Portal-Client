@@ -26,13 +26,13 @@ export const routes: Routes = [
   { path: 'newProduct', component: NewProductComponent },
   { path: 'newOrder', component: NewOrderComponent },
   { path: 'productToOrder', component: ProductToOrderComponent },
-  { path: 'view-order/:id', component: ViewOrderComponent},
+  { path: 'orders/:id', component: ViewOrderComponent},
   { path: 'view-order', component: ViewOrderComponent},
-  { path: 'view-product/:id',component: ViewProductComponent},
+  { path: 'products/:id', component: ViewProductComponent},
   { path: 'update-order', component: EditOrderComponent},
-  { path: 'update-product',component: EditProductComponent},
-  { path: 'product-to-order',component: ProductToEditOrderComponent},
-  { path: '', redirectTo: 'orders', pathMatch: 'full'}
+  { path: 'update-product', component: EditProductComponent},
+  { path: 'product-to-order', component: ProductToEditOrderComponent},
+  { path: '**', redirectTo: '/orders', pathMatch: 'full'}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

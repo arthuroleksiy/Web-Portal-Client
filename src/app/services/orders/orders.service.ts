@@ -36,7 +36,7 @@ addProductToOrder(product: ProductOrder) {
   this.detailedOrder.products.push(product)
 }
 
-getOrders() : Observable<Order[]> {
+getOrders(): Observable<Order[]> {
   return this.http.get<Order[]>(this.getUrl).pipe(
     map((data: Order[]) => {
       this.orders = data;
@@ -47,7 +47,17 @@ getOrders() : Observable<Order[]> {
         return throwError(error);
       }));
 }
-
+getOrderById(id: number): Observable<Order> {
+  return this.http.get<Order>(this.getUrl + '/' + id).pipe(
+    map((data) => {
+      this.order = data;
+      return data;
+    }),
+      catchError(error => {
+        console.log(error);
+        return throwError(error);
+      }));
+}
 updateOrder(order: Order) {
   return this.http.put<Order>(this.getUrl, order).pipe(
     catchError(error => {
@@ -63,9 +73,9 @@ addOrder(order: Order) {
   }
 
   getOrdersWithAddress(customers: Customer[], outputOrders: OutputOrder[]): OutputOrder[]  {
-  outputOrders.forEach((outputOrder)=> {
+  outputOrders.forEach((outputOrder) => {
     customers.forEach((customer) => {
-      if(outputOrder.customerId == customer.customerId ) {
+      if(outputOrder.customerId === customer.customerId) {
         outputOrder.customerAddress = customer.customerAddress;
       }
     })

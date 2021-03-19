@@ -3,7 +3,8 @@
 }
 div#first {
   height: 20%;
-  padding-left:4%;
+  width:80%;
+  margin-left:40px;
 }
 div#second {
   height: 60%;

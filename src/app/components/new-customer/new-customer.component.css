@@ -1,58 +1,108 @@
-.line {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 8em 12em;
-  margin-top: 1.5em;
-  margin-left:30px;
-  width:60%;
-  font-weight: bold;
-}
-form {
-  width:70%;
-  height:auto;
-  border: 1px solid black;
-  margin-left: 43px;
-  /*display: flex;
-	flex-wrap: wrap;*/
-  position:absolute;
-}
-
-
-#buttons {
-  padding-right: 10px;
-  width:30%;
-  height:10%;
-  margin-bottom: 20px;
-  margin-left: 60%;
-  position:static;
-}
-button {
-  height: 3vh;
-  width:10vw;
+body {
+  background: #3AAFAB;
+  color: #fff;
+  padding: 50px 0;
 }
 
 #order {
-  margin-bottom: 0%;
+  margin-bottom: 20px;
   margin-left: 1%;
   color:rgb(45, 125, 151);
   font-size: x-large;
   font-weight: bold;
 }
 
-.label {
+.container {
+  width: 80%;
+  border: 1px solid black;
+  margin-left: 45px;
+}
+.container > #buttons {
+  margin-left: 30px;
+}
+
+.container * {
+  box-sizing: border-box;
+}
+
+.flex-outer,
+.flex-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.flex-outer {
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.flex-outer li,
+.flex-inner {
   display: flex;
-  flex-direction: row;
-  text-align: right;
-  width: 400px;
-  line-height: 26px;
-  margin-bottom: 10px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.input {
-  height: 20px;
-  margin-right: 0px;
+.flex-inner {
+  padding: 0 8px;
+  justify-content: space-between;
 }
 
-.error {
-  color: red;
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
 }
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  font-weight: 300;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li p {
+  margin: 0;
+}
+
+.flex-outer li input:not([type='checkbox']),
+.flex-outer li textarea {
+  padding: 15px;
+}
+
+.flex-outer  #buttons {
+  margin-left: auto;
+  padding: 5px;
+  border: none;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
+  width:280px;
+  height:40px;
+  margin-bottom: 30px;
+}
+
+.flex-inner li {
+  width: 200px;
+}
+
+input, textarea {
+  max-width: 400px;
+}
+
+
+button {
+  height:30px;
+  width:120px;
+  margin:5px;
+}
+

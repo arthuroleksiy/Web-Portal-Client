@@ -26,21 +26,24 @@
   </div>
 </form>-->
 
-
+<div class="container">
 <form [formGroup] = "AddCustomerForm" (ngSubmit) = "addCustomer(AddCustomerForm.value)">
 
+  <ul class="flex-outer">
   <div class="inputFields">
     <p id="order">
       New Customer
     </p>
-  <div class="line">
-    <label class="label">Creation Date:</label>
-    <label class="input" formControlName="creationDate" >{{ today }}</label>
   </div>
+    <li>
+    <label class="label">Creation Date:</label>
+    <label class="input" formControlName="creationDate" >{{ today | date}}</label>
+    </li>
 
-  <div class="line">
+  <li>
     <label class="label">Customer Name:</label>
     <input type="text" name="customerName" class="form-control" formControlName="customerName" />
+  </li>
     <!--<div *ngIf="submitted && f.customerName.errors?.required || customerName.invalid && (customerName.dirty || customerName.touched)" class="invalid-feedback">
       <div *ngIf="customerName.errors.required">
         Name is required.
@@ -49,19 +52,20 @@
     <div class="error" *ngIf="submitted && customerName.errors?.required">
       Choose status.
     </div>
-  </div>
 
-  <div class="line">
+  <li>
     <label class="label">Address:</label>
     <textarea class="form-control" id="customerAddress" formControlName="customerAddress"></textarea>
     <div class="error" *ngIf="submitted && customerAddress.errors?.required">
       Address is required.
     </div>
-  </div>
-</div>
-
-  <div id = "buttons">
+  </li>
+  <li>
+  <div id="buttons">
     <button type="submit" class="button">Save</button>
     <button type="reset" routerLink="/customers" class="button">Cancel</button>
   </div>
+  </li>
+</ul>
 </form>
+</div>

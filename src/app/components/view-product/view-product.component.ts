@@ -24,8 +24,8 @@ export class ViewProductComponent implements OnInit {
     productSize: new FormControl("")
     });
 
-    editProduct()
-     {
+  editProduct()
+  {
 
       //this.route.paramMap.subscribe(params =>
       this.router.navigate(["update-product"])
@@ -33,7 +33,16 @@ export class ViewProductComponent implements OnInit {
 
     }
   ngOnInit() {
-    this.product = this.productService.detailedProduct
+    if (Number(this.route.snapshot.paramMap.get('id'))) {
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+
+      this.productService.getProductById(id).subscribe((data) => {
+        this.product = data;
+      });
+    }
+
+    //this.product = this.productService.detailedProduct
+
     /*this.productService.getProducts().subscribe((data) => {
       data.forEach((product)  => {
         this.route.paramMap.subscribe(params =>

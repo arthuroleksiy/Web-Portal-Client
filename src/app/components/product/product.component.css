@@ -31,22 +31,12 @@ table {
   padding-left: 10px;
 }
 
+
 #newOrder {
-  margin-left: 84%;
-  font-weight: 500;
-  display:inline-block;
-  padding: 0.5em 0.5em;
-  margin-bottom: 5px;
-  border:0.1em solid black;
-  border-radius: 3px solid black;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  color: black;
-  text-align:center;
-  transition: all 0.2s;
-  width:80px;
-  border-radius:3px;
+  float: right;
+  margin-right: 60px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .but {
   margin-left:4%;
@@ -55,6 +45,7 @@ table {
 #order {
   margin-bottom: 0%;
   margin-left: 1%;
+  margin-top:30px;
   color:rgb(45, 125, 151);
   font-size: x-large;
   font-family: bald;

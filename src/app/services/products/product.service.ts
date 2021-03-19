@@ -8,7 +8,7 @@ import {map, catchError} from 'rxjs/operators';
 })
 export class ProductService {
 
-getUrl = "https://localhost:44313/api/Product";
+getUrl = 'https://localhost:44313/api/Product';
 
 
 products: Product[] = [];
@@ -34,17 +34,32 @@ loadProducts() {
     this.products = data;
   });
 }
-addViewedProducts(products: Product) {
 
-  this.detailedProduct = products;
+addViewedProducts(product: Product) {
+
+  this.detailedProduct = product;
 }
+
 addOrderedProducts(products: Product[]) {
 
   this.products = products;
 }
-getProducts() : Observable<Product[]> {
+
+getProducts(): Observable<Product[]> {
   return this.http.get<Product[]>(this.getUrl).pipe(
     map((data: Product[]) => {
+      return data;
+    }),
+      catchError(error => {
+        console.log(error);
+        return throwError(error);
+      }));
+}
+
+getProductById(id: number): Observable<Product> {
+  return this.http.get<Product>(this.getUrl + '/' + id).pipe(
+    map((data) => {
+      this.detailedProduct = data;
       return data;
     }),
       catchError(error => {
@@ -65,6 +80,7 @@ addProduct(product: Product) {
          return throwError(error);
       }));
     }
+
   deleteProduct(productId: number) {
     return this.http.delete(this.getUrl + "/" + productId).pipe(
       catchError(error => {

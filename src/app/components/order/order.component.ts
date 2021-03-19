@@ -9,9 +9,8 @@ import { Order } from '../../interfaces/Order';
 import { Router } from '@angular/router';
 import { Product } from '../../interfaces/Product';
 import {OrderService } from '../../services/orders/orders.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { Observable, merge, fromEvent, interval, from } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
@@ -23,11 +22,10 @@ export class OrderComponent implements OnInit {
   constructor(private router: Router, private orderService: OrderService, private customerService: CustomerService, private formBuilder: FormBuilder) { }
 
   orders: Order[] = [];
-  //outputOrders: OutputOrder[] = [];
-  outputOrders:Observable<OutputOrder[]>
+  outputOrders: Observable<OutputOrder[]>;
+  //outputOrders: OutputOrder[]
   customers: Customer[] = [];
   AddOrderForm = this.formBuilder.group({
-
     orderId: 0,
     customerId: 0,
     customerName: "",
@@ -50,9 +48,28 @@ export class OrderComponent implements OnInit {
     //this.getCustomers();
     this.getOrder();
   }
+
+
  getOrder(): void {
-  this.customerService.getCustomers().subscribe((customer) =>
+/*
+    this.orderService.getOrders().pipe(mergeMap((i: Order[]) => {
+      return this.customerService.getCustomers().pipe(map((j: Customer[]) =>
+        this.orderService.getOrdersWithAddress(j, i)
+      ))
+    })).subscribe(result => this.outputOrders = result);*/
+
+    this.outputOrders = this.orderService.getOrders().pipe(mergeMap(res1 =>
+      this.customerService.getCustomers().pipe(map(res2 => {
+        return this.orderService.getOrdersWithAddress(res2, res1);
+      }))
+    ));
+
+    this.outputOrders.subscribe((data) => {
+        this.orders = data;
+    });
+  /*this.customerService.getCustomers().subscribe((customer) =>
   {
+
      this.outputOrders = this.orderService.getOrders().pipe(
        map(((data: Order[]) =>
         this.orderService.getOrdersWithAddress(customer, data)
@@ -61,7 +78,8 @@ export class OrderComponent implements OnInit {
   this.outputOrders.subscribe((data) => {
     this.orders = data;
   })
-  })
+  })*/
+
 
     /*this.orderService.getOrders().subscribe((data) =>
     {
@@ -71,6 +89,8 @@ export class OrderComponent implements OnInit {
       console.log(data);
     });*/
   }
+
+
   getCustomers(): void {
     this.customerService.getCustomers().subscribe((data) =>
     {
@@ -78,6 +98,7 @@ export class OrderComponent implements OnInit {
       console.log(data);
     });
   }
+
   addOrder(order: Order): void {
     this.orderService.addOrder(order).subscribe((data: any) => {
       console.log(data);
@@ -89,15 +110,14 @@ export class OrderComponent implements OnInit {
     }, error => console.log(error));
   }
 
-  toViewProduct(id: string)
+  toViewOrder(id: number)
   {
     this.orders.forEach((data) => {
-      if(data.orderId == Number(id))
-        //this.productService.addViewedProducts(data);
+      if(data.orderId === Number(id))
         this.orderService.addViewOrder(data)
       });
 
-      this.router.navigate(["/view-order/"+id, {id : id}]);
+      this.router.navigate(["/orders/", id]);
   }
 }
 

@@ -43,9 +43,7 @@ export class EditOrderComponent implements OnInit {
     this.getStatus();
     this.order = this.orderService.detailedOrder;
     this.productOrder = this.order.products;
-    //this.products = this.order.products;
-    this.setTotalCost();
-    //this.totalCost = this.order.totalOrderCost;
+    this.order.totalOrderCost = this.setTotalCost();
     this.EditOrderForm = new FormGroup({
       orderId: new FormControl(this.order.orderId, Validators.required),
       customerId: new FormControl(this.order.customerId),
@@ -53,7 +51,7 @@ export class EditOrderComponent implements OnInit {
       products: new FormControl(this.order.products),
       statusId: new FormControl(this.order.statusId),
       statusName: new FormControl(this.order.statusName, Validators.required),
-      totalOrderCost: new FormControl(this.totalCost, Validators.required),
+      totalOrderCost: new FormControl(this.order.totalOrderCost, Validators.required),
       orderDate: new FormControl(this.order.orderDate),
       comment: new FormControl(this.order.comment)
       })
@@ -139,12 +137,13 @@ export class EditOrderComponent implements OnInit {
      }});
   }
 
-  setTotalCost()
+  setTotalCost(): number
   {
     this.totalCost = 0;
     this.productOrder.forEach((element) =>
     this.totalCost += element.quantity * element.product.price
     );
+    return this.totalCost;
   }
   reset() {
     this.deletedProducts.forEach((product) => {
@@ -188,10 +187,10 @@ export class EditOrderComponent implements OnInit {
         bufferProducts.splice(i,1)
       }
     }
-
+  this.setTotalCost()
     this.orderService.detailedOrder.products = bufferProducts
     //this.productOrder = this.orderService.detailedOrder.products
-    this.router.navigate(['view-order/'+ String(this.orderService.order.orderId)])
+    //this.router.navigate(['view-order/'+ String(this.orderService.order.orderId)])
   }
 }
 

@@ -18,6 +18,11 @@ form {
 
 }
 */
+
+#newOrder {
+  float:right;
+  margin-right:60px;
+}
 form {
   width:60%;
   height:auto;

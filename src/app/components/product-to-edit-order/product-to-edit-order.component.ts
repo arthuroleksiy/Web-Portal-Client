@@ -92,6 +92,9 @@ export class ProductToEditOrderComponent implements OnInit {
     if(productOrder.product.productName === undefined || productOrder.product.productName === undefined) {
       throw this.checkError = "Wrong product name or category"
     }
+    if(this.orderService.hasProduct(productOrder.productId)) {
+
+    }
     this.orderService.addProductToOrder(productOrder)
     this.router.navigate(['update-order/']);
 

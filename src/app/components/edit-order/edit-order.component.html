@@ -1,31 +1,37 @@
+
+<div class="container">
 <form [formGroup] = "EditOrderForm" (ngSubmit) = "updateOrder(EditOrderForm.value)" >
   <p id="order">
     Edit Order
-  </p><button id="newOrder" routerLink="/product-to-order">AddProduct</button>
-  <div class="line">
+  </p>
+
+  <button id="AddOrder" routerLink="/product-to-order">AddProduct</button>
+
+  <ul class="flex-outer">
+  <li>
     <label class="label">Order Number:</label>
     <label formControlName="orderNumber" digitOnly decimal="true">{{order.orderId}}</label>
-  </div>
+  </li>
 
-  <div class="line">
+  <li>
     <label class="label">Total Cost:</label>
-    <label id="decimal-number" formControlName="totalOrderCost" digitOnly decimal="true">{{totalOrderCost}}</label>
-  </div>
+    <label id="decimal-number" formControlName="totalOrderCost" digitOnly decimal="true">{{order.totalOrderCost | currency}}</label>
+  </li>
 
-    <div class="line">
+  <li>
       <label class="label">Customer:</label> <select formControlName="customerName">
         <option [value]="customer.customerName" *ngFor="let customer of customer">{{customer.customerName}}</option>
         </select>
-    </div>
+      </li>
     <div class="error" *ngIf="submitted && customerName.errors?.required">
       Choose status.
     </div>
-    <div class="line">
+    <li>
       <label class="label">Status: </label>
       <select formControlName="statusName">
         <option [value]="status.statusName" *ngFor="let status of statuses">{{status.statusName}}</option>
       </select>
-    </div>
+    </li>
 
     <div class="error" *ngIf="submitted && statusName.errors?.required">
       Choose status.
@@ -33,9 +39,9 @@
     <p class="error" *ngIf="checkError!=''">
       {{checkError}}
     </p>
-  <div class="line">
+    <li>
     <label class="label">Order Date:</label><label formControlName="orderDate" >{{order.orderDate| date}}</label>
-  </div>
+    </li>
   <table>
     <thead>
       <tr>
@@ -61,12 +67,14 @@
         </tr>
     </tbody>
   </table>
-  <div class="line">
+  <li>
     <label class="label">Comment:</label><textarea id="input" type="text" formControlName="comment"></textarea>
-  </div>
+  </li>
 
   <div id = "buttons">
     <button type="submit" class="button">Save</button>
     <button type="reset" routerLink="/view-order" class="button">Cancel</button>
   </div>
+  </ul>
 </form>
+</div>

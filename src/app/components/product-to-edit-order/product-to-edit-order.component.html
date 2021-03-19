@@ -1,36 +1,44 @@
+
+<div class="container">
 <form [formGroup] = "EditProductToOrderForm"  (ngSubmit) = "addProductOrder(EditProductToOrderForm.value)">
   <p id="order">
     Add product to order
   </p>
-  <div class="line">
-    <span class="label">Product Name:</span>
+
+  <ul class="flex-outer">
+  <li>
+    <label class="label">Product Name:</label>
     <select formControlName="productName">
       <option [class.is-invalid]="product.productName" [value]="product.productName" *ngFor="let product of products">{{product.productName}}</option>
     </select>
-  </div>
+  </li>
   <div class="error" *ngIf="submitted && productName.errors?.required">
     Product name is required.
   </div>
-  <div class="line">
-    <span class="label">Quantity:</span>
+  <li>
+    <label class="label">Quantity:</label>
     <input id="quantity" type="text" formControlName="quantity" digitOnly decimal="true"  required/>
-  </div>
+  </li>
   <div class="error" *ngIf="submitted && quantity.errors?.required">
     Quantity name is required.
  </div>
-  <div class="line">
-    <span class="label">Product Size: </span><select formControlName="productSize">
+ <li>
+    <label class="label">Product Size: </label><select formControlName="productSize">
       <option [value]="size.size" *ngFor="let size of sizes">{{size.size}}</option>
     </select>
-  </div>
+  </li>
   <div class="error" *ngIf="submitted && productSize.errors?.required">
     Product size is required.
   </div>
   <p class="error" *ngIf="checkError!=''">
     {{checkError}}
   </p>
+  <li>
   <div id = "buttons">
     <button type="submit" class="button">Save</button>
     <button type="reset" routerLink="/update-order" class="button">Cancel</button>
   </div>
+</li>
+  </ul>
 </form>
+</div>

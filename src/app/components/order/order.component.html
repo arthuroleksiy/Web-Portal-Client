@@ -11,8 +11,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr  *ngFor="let order of outputOrders  |async">
-      <td><a (click)="toViewProduct(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>
+    <tr  *ngFor="let order of outputOrders | async">
+      <td><a (click)="toViewOrder(order.orderId)" routerLinkActive="active">{{order.orderId}}</a></td>
       <td>{{order.customerName}}</td>
       <td class="address">{{order.customerAddress }}</td>
       <td>{{order.totalOrderCost}}</td>

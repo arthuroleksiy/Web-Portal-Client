@@ -1,8 +1,14 @@
 
 
+ .error {
+  color: red;
+}
+
+
+/**/
 #order {
   margin-bottom: 0%;
-  margin-left: 1%;
+  margin-left: 3%;
   color:rgb(45, 125, 151);
   font-size: x-large;
   font-family: bald;
@@ -26,107 +32,19 @@ td {
   text-align: center;
   padding-top: 5px;
   padding-bottom: 10px;
+  flex-basis: auto;
 }
 
 table {
   margin-left: 4%;
   margin-bottom: 20px;
-  width: 40vw;
   border-spacing: 0.5px;
-  overflow: auto;
-  resize:inherit
-}
 
-.address {
-  text-align: left;
-  padding-left: 10px;
-}
-
-#newOrder {
-  margin-left: 84%;
-  font-weight: 500;
-  display:inline-block;
-  padding: 0.5em 0.5em;
-  margin-bottom: 5px;
-  border:0.1em solid black;
-  border-radius: 3px solid black;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:'Roboto',sans-serif;
-  color: black;
-  text-align:center;
-  transition: all 0.2s;
-  width:80px;
-  border-radius:3px;
-}
-#order {
-  margin-bottom: 0%;
-  margin-left: 1%;
-  color:rgb(45, 125, 151);
-  font-size: x-large;
-  font-family: bald;
-}
-.border {
-  width:80%;
-  border:1px solid black;
-  border-radius: 3px;
-  margin-left:4.5%;
-}
-.line {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 8em auto;
-  margin-top: 1.5em;
-  margin-left:30px;
-  width:60%;
-  font-weight: bold;
-}
-form {
-  width:fit-content;
-  height:auto;
-  border: 1px solid black;
-  margin-left: 43px;
-  /*display: flex;
-	flex-wrap: wrap;*/
-  position:absolute;
-
-  min-width: 1vw;
+  flex-basis: auto;
 }
 
 
-#buttons {
-  padding-top: 40px;
-  width:30%;
-  height:10%;
-  margin-bottom: 20px;
-  margin-left: 60%;
-  position:static;
-}
-button {
-  height: 3vh;
-  width:10vw;
-}
 
-#order {
-  margin-bottom: 0%;
-  margin-left: 1%;
-  color:rgb(45, 125, 151);
-  font-size: x-large;
-  font-weight: bold;
-}
-
-.label {
-  display: flex;
-  flex-direction: row;
-  text-align: right;
-  line-height: 26px;
-  margin-bottom: 10px;
-  width:auto;
-}
-
-.input {
-  height: 20px;
-}
 #add {
    height:auto;
  }
@@ -134,3 +52,114 @@ button {
  .error {
   color: red;
 }
+body {
+  background: #3AAFAB;
+  color: #fff;
+  padding: 50px 0;
+}
+
+#order {
+  margin-bottom: 20px;
+  margin-left: 1%;
+  color:rgb(45, 125, 151);
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.container {
+  width: 80%;
+  border: 1px solid black;
+  margin-left: 45px;
+}
+.container > #buttons {
+  margin-left: 30px;
+
+}
+
+.container * {
+  box-sizing: border-box;
+}
+
+.flex-outer,
+.flex-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.flex-outer {
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.flex-outer li,
+.flex-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-inner {
+  padding: 0 8px;
+  justify-content: space-between;
+}
+
+.flex-outer > li:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  font-weight: 300;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li p {
+  margin: 0;
+}
+
+.flex-outer li input,
+.flex-outer li textarea,
+.flex-outer li label .form-control {
+  float:left;
+}
+
+
+.flex-outer  #buttons {
+  margin-left: auto;
+  padding: 5px;
+  border: none;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
+  width:280px;
+  height:40px;
+  margin-bottom: 30px;
+}
+
+.flex-inner li {
+  width: 200px;
+}
+
+input, textarea, select {
+  max-width: 400px;
+}
+
+button {
+  height:30px;
+  width:120px;
+  margin:5px;
+}
+
+
